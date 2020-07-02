@@ -1,45 +1,46 @@
-$(function() {
-    $(".change-sleep").on("click", function(event) {
+
+    $(".devourBtn").on("click", function(event) {
       var id = $(this).data("id");
-      var newSleep = $(this).data("newsleep");
+    //   var newSleep = $(this).data("newsleep");
   
-      var newSleepState = {
-        sleepy: newSleep
+      var newState = {
+        devoured: true
       };
-  
+     console.log(id)
       // Send the PUT request.
-      $.ajax("/api/cats/" + id, {
+      $.ajax("/api/burger/" + id, {
         type: "PUT",
-        data: newSleepState
+        data: newState
       }).then(
-        function() {
-          console.log("changed sleep to", newSleep);
+        function(res) {
+          console.log(res);
           // Reload the page to get the updated list
           location.reload();
         }
       );
     });
-  
-    $(".create-form").on("submit", function(event) {
+     console.log("hello")
+   
+    $("#Add-Burger").on("click", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
   
-      var newCat = {
-        name: $("#ca").val().trim(),
-        sleepy: $("[name=sleepy]:checked").val().trim()
+      var newBurger = {
+        burger_name: $("#burger").val().trim(),
+    
       };
   
       // Send the POST request.
-      $.ajax("/api/cats", {
+      $.ajax("/api/burger", {
         type: "POST",
-        data: newCat
+        data: newBurger
       }).then(
-        function() {
-          console.log("created new cat");
+        function(response) {
+          console.log(response)
           // Reload the page to get the updated list
           location.reload();
         }
       );
     });
-  });
+  
   

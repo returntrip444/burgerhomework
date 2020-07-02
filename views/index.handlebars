@@ -1,0 +1,25 @@
+<h1>Devour BurgerApp</h1>
+
+<ul>
+            {{#each burger}}
+            {{#unless this.devour}}
+            <li class="list-of-burgers rounded">{{this.burger_name}} <button id="devourBtn" class="devourBtn btn-primary rounded"
+                    data-id="{{this.id}}">Devour</button></li>
+            {{/unless}}
+            {{/each}}
+        </ul>
+
+        <ul>
+            {{#each burger}}
+            {{#if this.devour}}
+            <li class="list-of-eaten-burgers">{{this.burger_name}}<button id="deleteBtn" class="deleteBtn btn-danger rounded"
+                    data-id="{{this.id}}">Delete</button></li>
+            {{/if}}
+            {{/each}}
+        </ul>
+
+
+<form>
+    <input id= "burger" type="text">
+    <button id= "Add-Burger"> Add-Burger</button>
+</form>
